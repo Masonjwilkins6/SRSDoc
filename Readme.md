@@ -2,8 +2,8 @@
 
 # Group Memebers
 
-Mason Wilkins
-Zahraa Alsafar
+Mason Wilkins ||
+Zahraa Alsafar ||
 Marcelina Rofaiel
 
 # System Description 
