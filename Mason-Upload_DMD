@@ -1,0 +1,73 @@
+Justifications
+
+Technology:
+
+The OTTS will rely on only one database system, which is the PostgreSQL. There are many benefits to using only one database system. Benefits include less complexity and not having to deal with integration challenges, cost efficiency, and performance optimization. 
+
+PostgreSQL is the world’s most advanced open source database, which makes it the most compatible to use for our online theater ticketing system. It is the best option of all SQL databases when it comes to web development. This is due to PostgreSQL having reliability and stability as it has proven itself to handle complex data requirements and large workloads. PostgreSQL also ensures data integrity and consistency, which we as a team have guaranteed we will provide for our customers. Lastly, PostgreSQL is a database that can handle large volume data and high traffic on the website, which we have tested and proven to be successful. 
+
+
+Tables:
+
+User Table: The user table stores information about users who are registered in the OTTS. It contains essential user information as well as timestamps for when the account was created and updated. It is crucial to have this in our database because it provides essential information about user authentication and profile management. 
+
+Movie Table: The show table stores information about showtimes, show titles, descriptions, and timestamps for when the show was created, added, and updated onto the OTTS. This allows for easy management of features such as information about upcoming shows, which will allow users to purchase tickets. 
+
+Venue and Seating Table: The venue table stores information about the location of the venue, the capacity, website, and timestamps for when the venue was created and last updated. It also includes information about the seating arrangement in each theater. This table ensures management of venue information such as seat arrangements, and directions to the venue.
+
+Ticket Table:  The ticket table stores information about tickets being purchased. Information includes the seat number, ticket price, ticket status, and timestamps for when the ticket was generated and updated. This table ensures ticket management, seat allocation, and transaction tracking. 
+
+Review Table: The review table has information about the ratings, reviews, and comments. It also has information regarding the tickets the user has selected and the seats selected. It is crucial to have this table because it provides important information needed before moving on to the payment table. This table allows the user to confirm the tickets they have selected and move onto payment transactions. 
+
+
+Payment table: The payment table stores information regarding the tickets prices and the user payment information. It includes information such as the amount of tickets, the price of the ticket, the payment_information provided by the user, transaction ID, and status of the transaction. This table is extremely important to ensure the user can complete a transaction for the tickets selected. 
+
+
+Confirmation Table: The confirmation table facilitates tracking and managing of ticket purchase confirmations. There is essential information being stored such as the user the confirmation belongs to, ticket information, confirmation codes, confirmation status, and timestamps. This table allows the OTTS to generate, track, and validate ticket purchase confirmations, which would give customers a reliable ticketing experience.
+
+
+Trade Offs:
+
+Scalability:
+As mentioned previously, PostgreSQL is the world’s most advanced open source database. Hence, the database is more complex than other NoSQL databases. PostgreSQL is remotely more challenging to scale. Therefore, if the OTTS has frequent updates and growth in data, there may need to be more effort being put into the database being altered and updated. 
+
+Performance Optimization:
+PostgreSQL has more advanced SQL features and therefore to ensure that the OTTS responds properly to the database system we must dedicate more time than average to the functionality of the system. Time must be dedicated to details such as indexing tables and optimizing database configurations. 
+
+Cost of Operations: 
+PostgreSQL is free to use for the public. However, in order to maintain the database and ensure that it operates properly, extra costs may apply. These costs include infrastructure expenses such as hosting and storage, personnel costs such as monitoring of the database, and licensing fees of tools and services. A fund must be dedicated to maintaining these extra costs and ensuring that there are no issues with the OTTS operations. 
+
+
+Data Management Diagram:
+
+
+
+
+Data Management Diagram Descriptions
+What is a Data Management Diagram?
+A Data Management Diagram (Aka, Entity-Relationship-Diagram) is a visual representation of a database. For the OTTS, this data management diagram shows the different entities that hold user data and theater data, and the relationship between them. 
+
+Description: User Table
+The “User Table” stores information about the users of the OTTS. Within this table are the attributes associated with users of the system, such as ID, Username, Email, Password (for user data security), user_membership, phone number, and user birthday. The User table data is related to the Ticket Table in a one-to-many relationship (the user can have up to 20 tickets). 
+
+Description: Venue and Seat Table
+The Venue and Seat Table is part of the OTTS database that stores information about the different “The Box” locations, where users can view the purchased tickets. It also stores the information regarding the user’s seat information. It includes the seat number and the selected seat. ID, Venue_ID, location, capacity, seat_selection, and seat_number. All of these attributes are essential for correctly displaying information for the user to ensure they go to the correct theater for the best experience.
+
+Description: Movie Table
+The Movie Table stores information about the current movies playing at each theater. Movie ID, title, summary, rating, rating, movie time, and movie date. All of these attributes store the correct information for the current movies playing at the OTTS. 
+
+Description: Ticket Table
+The Ticket Table, as mentioned before, is where all ticket-related information is stored for the user. ID, user_id (foreign key that references the user who purchased the ticket), show_id(foreign key that references the show that the ticket is for), seat_number, ticket_price, and ticket_amount are all essential attributes of the ticket class. Users should know their seat number, the price paid for each ticket, as well as the other information that acts as a receipt for the user. These other attributes, such as user_id and show_id, are essentially data encapsulation; the user can see it, but it is more for the theater to understand that the ticket is valid. 
+
+Description: Confirmation Table
+	The Confirmation table stores information for user confirmation. Confirmation_id, billing, ticket_id, user_email, seat_id, and venue_id. These attributes store the correct user information to ensure that the confirmation page displays the user's email, billing method, seat, ticket, and venue to thank the user for their interest in “The Box”. 
+	
+Description: Review Table
+The Review table stores information about the reviews that users have written for shows. Review_id, user_id, rating, comment, seat_id, and ticket_id are all attributes that need to be stored by the database like typical social media platforms. The review page in the OTTS is a way for users to provide accurate information about the current movies showing. Most of these attributes ensure that the comments are real user comments. 
+
+Description: Payment Table
+Finally, the Payment table stores information about the payments that have been made for tickets. Payment_id, user_id, ticket_id, amount, payment_information, transaction, status. All of these attributes are important for the database to store to make sure all users can ensure that their payment information is safe and secure. 
+
+Software Architecture
+
+The SWA diagram provides a comprehensive overview of the architecture of the OTTS at a high level. The diagram lists the major components of the system and their interactions. The components listed are the web browser, movie selection interface, seat selection interface, seat availability, ticket booking interface, payment interface, database, and login interface. The database holds user data, movie data, file storage, and seat data. The movie selection interface sends a pull request to the database in order to access the stored account, movie, seat, and payment information. With our security techniques the OTTS data is secure and transferred securely.
